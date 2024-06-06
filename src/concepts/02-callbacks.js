@@ -6,15 +6,23 @@ import { heroes } from "../data/heroes";
  */
 export const callbacksComponent = ( elementId ) => {
     
-    const id = "5d86371f1efebc31def272e2";
-
-    findHero(id, (error, heroe) => {
+    const id1 = "5d86371f1efebc31def272e2";
+    const id2 = "5d86371f233c9f2425f16916";
+    //! Callback Hell, difícil de mantener
+    findHero(id1, (error, hero1) => {
         // elementId.innerHTML = heroe?.name || 'No existe el id';
         // (error) ? elementId.innerHTML = error :
         if (error) {
             elementId.innerHTML = error;
+            return;
         }
-        elementId.innerHTML = heroe.name;
+        findHero(id2, (error, hero2) => {
+            if (error) {
+                elementId.innerHTML = error;
+                return;
+            }
+            elementId.innerHTML = `${hero1.name} - ${hero2.name}`;
+        });
     });
 }
 
@@ -23,7 +31,7 @@ export const callbacksComponent = ( elementId ) => {
  * @param {(error: String, callback: Object)=> void} callback
  */
 const findHero = (id, callback) => {
-    const hero = heroes.find( heroe => heroe.id === id);
+    const hero = heroes.find( hero => hero.id === id);
     if(!hero) {
         callback(`No existe el heroe con el id: ${id}`);
         return;
