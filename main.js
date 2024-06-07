@@ -7,6 +7,7 @@ import { callbacksComponent } from './src/concepts/02-callbacks'
 import { promiseComponent } from './src/concepts/03-promises'
 import { promiseRaceComponent } from './src/concepts/04-promise-race'
 import { asyncComponent } from './src/concepts/05-async'
+import { asyncAwaitComponent } from './src/concepts/06-async-await'
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -28,4 +29,5 @@ const element = document.querySelector(".test");
 // callbacksComponent(element);
 // promiseComponent(element);
 // promiseRaceComponent(element);
-asyncComponent(element);
+// asyncComponent(element);
+asyncAwaitComponent(element);
